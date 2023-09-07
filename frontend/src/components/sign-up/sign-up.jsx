@@ -63,10 +63,10 @@ export const SignUp = ({ extraClass = "" }) => {
     if (step === 1) {
       setStep(2);
     } else {
-      const { avatar, ...rest } = userData;
+      const { avatar, about, ...rest } = userData;
       errorMessage && setErrorMessage("");
       try {
-        if (avatar) {
+        if (avatar && about) {
           await registerUser(userData);
         } else {
           await registerUser(rest);
