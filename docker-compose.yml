@@ -8,7 +8,7 @@ services:
     networks:
       - db-network
     volumes:
-      - /var/lib/docker/volumes/db-data/_data
+      - db-volume:${POSTGRES_PGDATA}
     env_file:
       - .env.db
 
@@ -36,3 +36,6 @@ services:
 networks:
   db-network:
   http-network:
+
+volumes:
+  db-volume:
