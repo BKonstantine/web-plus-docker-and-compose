@@ -38,4 +38,4 @@ networks:
   http-network:
 
 volumes:
-  web-plus-docker-and-compose_db-volume:
+  db-volume
