@@ -2,19 +2,6 @@ version: "3"
 
 services:
 
-  backend:
-    build: backend
-    restart: "unless-stopped"
-    networks:
-      - db-network
-      - http-network
-    env_file:
-      - .env
-    ports:
-      - "4000:3000"
-    depends_on:
-      - postgres
-
   postgres:
     image: "postgres:12.12-alpine"
     restart: "unless-stopped"
@@ -23,7 +10,20 @@ services:
     volumes:
       - db-volume:${POSTGRES_PGDATA}
     env_file:
-      - .env
+      - .db.env
+
+  backend:
+    build: backend
+    restart: "unless-stopped"
+    networks:
+      - db-network
+      - http-network
+    env_file:
+      - .backend.env
+    ports:
+      - "4000:3000"
+    depends_on:
+      - postgres
 
   frontend:
     build: frontend
