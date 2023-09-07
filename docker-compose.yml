@@ -38,4 +38,4 @@ networks:
   http-network:
 
 volumes:
-  db-volume
+  db-volume:
